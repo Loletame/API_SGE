@@ -24,4 +24,4 @@ exports.updateProfesor = async(profesor)=>{
 exports.deleteProfesorById = async (id) =>{
     const [rows, fields] = await db.execute('DELETE FROM profesores WHERE id = ?', [id]);
     return rows
-} 
+}  
