@@ -33,15 +33,16 @@ exports.getProfesoresById = async (req, res) => {
         if (profesores.length < 1) {
             res.status(404).json({
                 success: false,
-                msg: `nO EXISTE: ${idProfesor}`
+                msg: `No existe el profesor con id: ${idProfesor}`
             })
 
         }
         res.status(200).json({
             success: true,
-           profesores
+            profesores
 
         })
+        
     }
 
     catch (error) {
@@ -78,9 +79,9 @@ exports.updateProfesor = async (req, res) => {
         id,
         ...profesorActualizado  //muestra todo lo que necesitamos de forma mas breve
     }
-    console.log(estudiante)
+   
     try {
-        const listaActualizada = await profesoresModel.updateEstudiante(profesor)
+        const listaActualizada = await profesoresModel.updateProfesor(profesor)
         if (listaActualizada < 1) {
             res.status(404).json({
                 success: false,
@@ -90,7 +91,7 @@ exports.updateProfesor = async (req, res) => {
         res.status(200).json({
             success: true,
             message: "lista actualizada",
-       profesor
+            profesor
         })
      }
      catch(error) {
@@ -106,7 +107,7 @@ exports.updateProfesor = async (req, res) => {
         try {
             const profesor = await profesoresModel.deleteProfesorById(idProfesor)
     
-            if(estudiante.length<1){ //pregunto si existe el usuario
+            if(profesor.length<1){ //pregunto si existe el usuario
                 res.status(404).json({
                     success:false,
                     mgs:`No existe usuario con el id: ${idEstudiante}`

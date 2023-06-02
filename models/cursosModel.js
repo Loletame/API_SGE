@@ -13,11 +13,11 @@ exports.getCursosById = async (id) => {
     return rows;
 }
 exports.addCurso = async (nuevocurso) => {
-    const [rows, fields] = await db.execute('INSERT INTO cursos (nombre, descripcion) VALUES (?, ?, ?)', [nuevocurso.nombre, nuevocurso.edad, nuevocurso.grado]);
+    const [rows, fields] = await db.execute('INSERT INTO cursos (nombre, descripcion) VALUES (?, ?)', [nuevocurso.nombre, nuevocurso.descripcion]);
     return rows;
 }
 exports.updateCurso = async(curso)=>{
-    const [rows, fields] = await db.execute('UPDATE cursos SET nombre = ?, descripcion = ?, grado = ? WHERE id = ?', [curso.nombre, curso.edad, curso.grado, curso.id]);
+    const [rows, fields] = await db.execute('UPDATE cursos SET nombre = ?, descripcion = ? WHERE id = ?', [curso.nombre, curso.descripcion, curso.id]);
     return rows
 }
 exports.deleteCursoById = async (id) =>{

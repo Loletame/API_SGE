@@ -35,7 +35,7 @@ exports.getEstudianteById = async (req, res) => {
         if (estudiante.length < 1) {
             res.status(404).json({
                 success: false,
-                msg: `nO EXISTE: ${idEstudiante}`
+                msg: `No existe el estudiante con: ${idEstudiante}`
             })
 
         }
@@ -115,7 +115,7 @@ exports.updateEstudiante = async (req, res) => {
             if(estudiante.length<1){ //pregunto si existe el usuario
                 res.status(404).json({
                     success:false,
-                    mgs:`No existe usuario con el id: ${idEstudiante}`
+                    msg:`No existe usuario con el id: ${idEstudiante}`
                 })
             }
             //si todo va bien y existe el usuario =D
