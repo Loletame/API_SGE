@@ -29,3 +29,7 @@ exports.getCursoEstudiantes = async (id) => {
     console.log(rows)
     return rows;
 }
+//exports.addEstudianteToCurso = async (id) =>{
+
+//}
+//exports.deleteEstudianteFromCurso = async (id)
