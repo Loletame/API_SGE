@@ -31,13 +31,13 @@ exports.getProfesoresById = async (req, res) => {
         const profesores= await profesoresModel.getProfesoresById(idProfesor)
 
         if (profesores.length < 1) {
-            res.status(404).json({
+            return res.status(404).json({
                 success: false,
                 msg: `No existe el profesor con id: ${idProfesor}`
             })
 
         }
-        res.status(200).json({
+        return res.status(200).json({
             success: true,
             profesores
 
@@ -47,7 +47,7 @@ exports.getProfesoresById = async (req, res) => {
 
     catch (error) {
         console.error(error);
-        res.status(500).json({
+        return res.status(500).json({
             success: false,
             message: 'Hubo un error al obtener los datos de los Profesores'
         })
@@ -101,30 +101,27 @@ exports.updateProfesor = async (req, res) => {
         })
         }
     }
-    exports.deleteProfesorById = async(req, res)=>{
-
+    exports.deleteProfesorById = async (req, res) => {
         const idProfesor = req.params.id;
         try {
-            const profesor = await profesoresModel.deleteProfesorById(idProfesor)
+            const profesor = await profesoresModel.deleteProfesorById(idProfesor);
     
-            if(profesor.length<1){ //pregunto si existe el usuario
-                res.status(404).json({
-                    success:false,
-                    mgs:`No existe usuario con el id: ${idEstudiante}`
-                })
+            if (!profesor) {
+                return res.status(404).json({
+                    success: false,
+                    msg: `No existe profesor con el id: ${idProfesor}`
+                });
             }
-            //si todo va bien y existe el usuario =D
-            res.status(200).json({
-                success:true,
-                msg:"El usuario fue eliminado con exito"
-            })
-        } catch (error) {
     
+            return res.status(200).json({
+                success: true,
+                msg: "El profesor fue eliminado con éxito"
+            });
+        } catch (error) {
             console.error(error);
-            res.status(500).json({
-                success:false,
-                message: 'Hubo un error al eliminar el usuario'
-            })
+            return res.status(500).json({
+                success: false,
+                message: 'Hubo un error al eliminar el profesor'
+            });
         }
-    }  
-
+    };

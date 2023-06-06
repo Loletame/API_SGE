@@ -33,13 +33,13 @@ exports.getEstudianteById = async (req, res) => {
         const estudiante= await estudiantesModel.getEstudianteById(idEstudiante)
 
         if (estudiante.length < 1) {
-            res.status(404).json({
+            return res.status(404).json({
                 success: false,
                 msg: `No existe el estudiante con: ${idEstudiante}`
             })
 
         }
-        res.status(200).json({
+        return res.status(200).json({
             success: true,
            estudiante
 
@@ -48,7 +48,7 @@ exports.getEstudianteById = async (req, res) => {
 
     catch (error) {
         console.error(error);
-        res.status(500).json({
+        return res.status(500).json({
             success: false,
             message: 'Hubo un error al obtener los datos'
         })
@@ -132,3 +132,61 @@ exports.updateEstudiante = async (req, res) => {
             })
         }
     }  
+
+    exports.getEstudiantesCursos = async (req, res) => {
+
+
+    }
+    exports.getEstudiantesCursos = async (req, res) => {
+        const idEstudiante = req.params.id;
+        try {
+            const estudiante= await estudiantesModel.getEstudiantesCursos(idEstudiante)
+    
+            if (estudiante.length < 1) {
+                return res.status(404).json({
+                    success: false,
+                    msg: `No existe el estudiante con: ${idEstudiante}`
+                })
+    
+            }
+            return res.status(200).json({
+                success: true,
+               estudiante
+    
+            })
+        }
+        catch (error) {
+            console.error(error);
+            return res.status(500).json({
+                success: false,
+                message: 'Hubo un error al obtener los datos'
+            })
+        }
+    }
+    exports.getEstudianteCursos = async (req, res) => {
+        const idEstudiante = req.params.id;
+        try {
+            const estudiante= await estudiantesModel.getEstudianteCursos(idEstudiante)
+    
+            if (estudiante.length < 1) {
+                res.status(404).json({
+                    success: false,
+                    msg: `nO EXISTE: ${idEstudiante}`
+                })
+    
+            }
+            res.status(200).json({
+                success: true,
+               estudiante
+    
+            })
+        }
+    
+        catch (error) {
+            console.error(error);
+            res.status(500).json({
+                success: false,
+                message: 'Hubo un error al obtener los datos'
+            })
+        }
+    }

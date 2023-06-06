@@ -11,6 +11,12 @@ router.post('/', cursosController.addCurso);
 router.put('/:id', cursosController.updateCurso);
 router.delete('/:id', cursosController.deleteCursoById);
 
+router.get ('/:id/estudiantes', cursosController.getCursoEstudiantes);
+router.post ('/:id/estudiantes',cursosController.addEstudianteToCurso);
+
+
+//router.post('/cursos/:id/estudiantes', cursosController.addEstudianteToCurso);
+
 module.exports = router;
 
     

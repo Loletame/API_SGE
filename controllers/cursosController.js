@@ -129,3 +129,89 @@ exports.updateCurso = async (req, res) => {
             })
         }
     } 
+
+    exports.addEstudianteToCurso = async (req, res) => {
+        const cursoId = req.params.id;
+        const { estudianteId } = req.body;
+      
+        try {
+          // Logic to add the student to the course
+          // Assuming you have a cursosModel with a function called addEstudianteToCurso
+      
+          // Call the addEstudianteToCurso function passing the cursoId and estudianteId
+          const result = await cursosModel.addEstudianteToCurso(cursoId, estudianteId);
+      
+          if (result.success) {
+            return res.status(200).json({
+              success: true,
+              message: "Estudiante agregado al curso exitosamente."
+            });
+          } else {
+            return res.status(404).json({
+              success: false,
+              message: result.message // Provide an appropriate error message
+            });
+          }
+        } catch (error) {
+          console.error(error);
+          return res.status(500).json({
+            success: false,
+            message: "Hubo un error al agregar el estudiante al curso."
+          });
+        }
+      };
+
+    exports.getEstudiantesCursos = async (req, res) => {
+        const idEstudiante = req.params.id;
+        try {
+            const estudiante= await estudiantesModel.getEstudiantesCursos(idEstudiante)
+    
+            if (estudiante.length < 1) {
+                return res.status(404).json({
+                    success: false,
+                    msg: `No existe el estudiante con: ${idEstudiante}`
+                })
+    
+            }
+            return res.status(200).json({
+                success: true,
+               estudiante
+    
+            })
+        }
+        catch (error) {
+            console.error(error);
+            return res.status(500).json({
+                success: false,
+                message: 'Hubo un error al obtener los datos'
+            })
+        }
+    }
+    exports.getCursoEstudiantes = async (req, res) => {
+        const idCurso= req.params.id;
+        try {
+            const curso= await cursosModel.getCursoEstudiantes(idCurso)
+    
+            if (curso.length < 1) {
+                res.status(404).json({
+                    success: false,
+                    msg: `nO EXISTE: ${idCurso}`
+                })
+    
+            }
+            res.status(200).json({
+                success: true,
+                curso
+    
+            })
+        }
+    
+        catch (error) {
+            console.error(error);
+            res.status(500).json({
+                success: false,
+                message: 'Hubo un error al obtener los datos'
+            })
+        }
+    }
+    
