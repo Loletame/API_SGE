@@ -9,28 +9,29 @@ const {validarCampos} = require('./../middlewares/validarCampos')
 
 router.get('/', estudiantesController.getEstudiantes);
 router.get('/:id', estudiantesController.getEstudianteById);
-router.post('/', estudiantesController.addEstudiante);
+//router.post('/', estudiantesController.addEstudiante);
+
+
+
 router.post ('/',
 [
-    check ('nombre', "El nombre es obligatorio").not().isEmpty(),
-    check ('edad', "la edad es obligatorio").not().isEmpty(),
-    check ('grado', "El grado es obligatorio").not().isEmpty(),
+    check ('nombre', 'El nombre es obligatorio').not().isEmpty(),
+    check ('edad', 'La edad es obligatoria').not().isEmpty(),
+    check ('grado', 'El grado es obligatorio').not().isEmpty(),
     validarCampos
 ]
-,
-estudiantesController.addEstudiante
+,estudiantesController.addEstudiante
 
 );
-router.put('/:id', estudiantesController.updateEstudiante);
+//router.put('/:id', estudiantesController.updateEstudiante);
 router.put('/:id',
 [
     check('nombre', 'El nombre es obligatorio').not().isEmpty(),
-    check('edad', "La edad es obligatoria").not().isEmpty(),
+    check('edad', 'La edad es obligatoria').not().isEmpty(),
     check('grado', 'El grado es obligatorio').not().isEmpty(),
     validarCampos 
 ]
-,
-estudiantesController.updateEstudiante)
+,estudiantesController.updateEstudiante)
 router.delete('/:id',estudiantesController.deleteEstudianteById);
 
 router.get ('/:id/cursos', estudiantesController.getEstudianteCursos);

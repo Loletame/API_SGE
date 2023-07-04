@@ -10,21 +10,20 @@ const { check } = require('express-validator');
 
 router.get('/', cursosController.getCursos);
 router.get('/:id', cursosController.getCursosById);
-router.post('/', cursosController.addCurso);
+//router.post('/', cursosController.addCurso);
 router.post ('/', [ 
-    check ('nombre',"Nombre es obligatorio").not().isEmpty(),
-    check ('descripcion', "La descripicion es obligatoria").not().isEmpty(),
+    check ('nombre','El nombre es obligatorio').not().isEmpty(),
+    check ('descripcion', 'La descripicion es obligatoria').not().isEmpty(),
 validarCampos
 ]
 ,cursosController.addCurso);
-router.put('/:id', cursosController.updateCurso);
+//router.put('/:id', cursosController.updateCurso);
 router.put('/:id', [
-    check ('nombre', "El nombre es obligatorio").not().isEmpty(),
-    check ('descripcion', "La descripcion es obligatoria").not().isEmpty(),
+    check ('nombre', 'El nombre es obligatorio').not().isEmpty(),
+    check ('descripcion', 'La descripcion es obligatoria').not().isEmpty(),
     validarCampos
 ]
-,
-cursosController.updateCurso);
+,cursosController.updateCurso);
 
 router.delete('/:id', cursosController.deleteCursoById);
 
