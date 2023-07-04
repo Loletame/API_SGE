@@ -131,15 +131,15 @@ exports.updateCurso = async (req, res) => {
     } 
 
     exports.addEstudianteToCurso = async (req, res) => {
-        const cursoId = req.params.id;
-        const { estudianteId } = req.body;
+        const estudianteId = req.params.id;
+        const cursoId  = req.body;
       
         try {
           // Logic to add the student to the course
           // Assuming you have a cursosModel with a function called addEstudianteToCurso
       
           // Call the addEstudianteToCurso function passing the cursoId and estudianteId
-          const result = await cursosModel.addEstudianteToCurso(cursoId, estudianteId);
+          const result = await cursosModel.addEstudianteToCurso(estudianteId, cursoId);
       
           if (result.success) {
             return res.status(200).json({
@@ -161,10 +161,10 @@ exports.updateCurso = async (req, res) => {
         }
       };
 
-    exports.getEstudiantesCursos = async (req, res) => {
+    exports.getEstudianteCursos = async (req, res) => {
         const idEstudiante = req.params.id;
         try {
-            const estudiante= await estudiantesModel.getEstudiantesCursos(idEstudiante)
+            const estudiante= await estudiantesModel.getEstudianteCursos(idEstudiante)
     
             if (estudiante.length < 1) {
                 return res.status(404).json({
@@ -214,4 +214,29 @@ exports.updateCurso = async (req, res) => {
             })
         }
     }
+    exports.deleteEstudianteFromCursoById = async(req, res)=>{
+
+        const idCurso = req.params.id;
+        try {
+            const curso = await cursosModel.deleteEstudianteFromCursoById(idCurso)
     
+            if(curso.length<1){ //pregunto si existe el usuario
+                res.status(404).json({
+                    success:false,
+                    mgs:`No existe usuario con el id: ${idCurso}`
+                })
+            }
+            //si todo va bien y existe el usuario =D
+            res.status(200).json({
+                success:true,
+                msg:"El usuario fue eliminado con exito"
+            })
+        } catch (error) {
+    
+            console.error(error);
+            res.status(500).json({
+                success:false,
+                message: 'Hubo un error al eliminar el usuario'
+            })
+        }
+    } 

@@ -1,4 +1,42 @@
-#tablita{
+#tablita-es{
+    margin-top:20px;
+}
+th{
+    color:rgb(156, 206, 209) !important;
+    text-align: center;
+}
+tbody{
+  color:rgb(213, 224, 59) !important;
+  text-align: center;
+}
+body{
+    background-color: rgb(14, 92, 137);
+}
+img{
+    width:620px;
+    height: 670px;
+    margin-left:10px;   
+}
+#tablita-pr{
+    margin-top:20px;
+}
+th{
+    color:rgb(20, 19, 19) !important;
+    text-align: center;
+}
+tbody{
+  color:rgb(233, 236, 187) !important;
+  text-align: center;
+}
+body{
+    background-color: rgb(32, 107, 151);
+}
+img{
+    width:620px;
+    height: 670px;
+    margin-left:10px;   
+}
+#tablita-cr{
     margin-top:20px;
 }
 th{

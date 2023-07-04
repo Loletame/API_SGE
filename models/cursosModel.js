@@ -29,7 +29,9 @@ exports.getCursoEstudiantes = async (id) => {
     console.log(rows)
     return rows;
 }
-//exports.addEstudianteToCurso = async (id) =>{
-
-//}
-//exports.deleteEstudianteFromCurso = async (id)
+exports.addEstudianteToCurso = async(numero) => {
+    
+    const [rows, fields] = await db.execute('INSERT INTO estudiantes_cursos (estudiante_id, curso_id ) VALUES (?, ?)', [numero.id, numero.idCurso]);
+    console.log(rows);
+    return rows;
+};
