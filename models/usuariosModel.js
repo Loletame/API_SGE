@@ -1,6 +1,7 @@
 const db = require('./../config/db');
 const { Router } = require("express");
 
+  
 
 exports.obtenerUsuarios = async () => {
     const [rows, fiels] = await db.execute('SELECT * FROM usuarios')
