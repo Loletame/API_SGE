@@ -6,9 +6,9 @@
 //.// -------#: Obtener todos los cursos de un estudiante: `/estudiantes/:id/cursos`
 
 //.// -------#: Get all estudiantes from  curso: `/cursos/:id/estudiantes`(GET). 
-//.// -------#: Gey all cursos from a estudiante `/estudiantes/:id/cursos`(GET). 5/6/23.
-//.// -------#: Nuevo: form inputs for new Estudiantes, Profesores,Cursos en el html, MiddleWare ValidarCampos. 3/7/23.
-
-
+//.// -------#: Get all cursos from a estudiante `/estudiantes/:id/cursos`(GET). 
+//.// -------#: Form inputs for new Estudiantes, Profesores,Cursos en el html, MiddleWare ValidarCampos. 
+//.// -------#: (POST) a new usuario with an encrypted password at `/usuarios`, you can (GET) list of usuarios with the same route. 
+//.// -------#: included database template "sge.sql". 
 
 

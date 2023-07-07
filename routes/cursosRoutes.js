@@ -1,7 +1,7 @@
 const express = require ('express')
 const router = express.Router();
 const cursosController = require ('./../controllers/cursosController');
-const { validarCampos } = require('../middlewares/validarCampos');
+const { validarCampos } = require('./../middlewares/validarCampos');
 const { check } = require('express-validator');
 
 // definimos las rutas y derivamos al controlador correspondiente. Una interfaz que dice donde se manejan estas cosas
