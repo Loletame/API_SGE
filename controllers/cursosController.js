@@ -26,7 +26,8 @@ exports.getCursos = async (req, res) => {
         })
     }
 }
-exports.getCursosById = async (req, res) => {
+//EL get"..." trae informacion, en este caso el curso por id.
+exports.getCursosById = async (req, res) => { 
     const idCursos = req.params.id;
     try {
         const cursos = await cursosModel.getCursosById(idCursos)
@@ -53,7 +54,8 @@ exports.getCursosById = async (req, res) => {
         })
     }
 }
-exports.addCurso = async (req, res) => {
+//EL "add"(post)"..." lleva informacion, en este caso el curso a añadir.
+exports.addCurso = async (req, res) => { 
     const nuevoCurso = req.body;
     try {
         const id = await cursosModel.addCurso(nuevoCurso)
@@ -71,7 +73,7 @@ exports.addCurso = async (req, res) => {
         })
     }
 }
-
+//update actualiza/modifica
 exports.updateCurso = async (req, res) => {
     const id = req.params.id;
     const cursoActualizado = req.body;
@@ -102,7 +104,7 @@ exports.updateCurso = async (req, res) => {
         })
         }
     }
-
+//delete para borrar cursos especificos (id:)
     exports.deleteCursoById = async(req, res)=>{
 
         const idCurso = req.params.id;
@@ -129,16 +131,13 @@ exports.updateCurso = async (req, res) => {
             })
         }
     } 
-
+//agrega estudiante al curso
     exports.addEstudianteToCurso = async (req, res) => {
         const estudianteId = req.params.id;
         const cursoId  = req.body;
       
         try {
-          // Logic to add the student to the course
-          // Assuming you have a cursosModel with a function called addEstudianteToCurso
-      
-          // Call the addEstudianteToCurso function passing the cursoId and estudianteId
+         
           const result = await cursosModel.addEstudianteToCurso(estudianteId, cursoId);
       
           if (result.success) {
@@ -160,7 +159,7 @@ exports.updateCurso = async (req, res) => {
           });
         }
       };
-
+//borra estudiante del curso
     exports.getEstudianteCursos = async (req, res) => {
         const idEstudiante = req.params.id;
         try {
@@ -187,6 +186,7 @@ exports.updateCurso = async (req, res) => {
             })
         }
     }
+//trae  
     exports.getCursoEstudiantes = async (req, res) => {
         const idCurso= req.params.id;
         try {
@@ -226,7 +226,7 @@ exports.updateCurso = async (req, res) => {
                     mgs:`No existe usuario con el id: ${idCurso}`
                 })
             }
-            //si todo va bien y existe el usuario =D
+            //si todo va bien y existe el usuario 
             res.status(200).json({
                 success:true,
                 msg:"El usuario fue eliminado con exito"
