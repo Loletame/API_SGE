@@ -186,7 +186,7 @@ exports.updateCurso = async (req, res) => {
             })
         }
     }
-//trae  
+
     exports.getCursoEstudiantes = async (req, res) => {
         const idCurso= req.params.id;
         try {
