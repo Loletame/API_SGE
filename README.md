@@ -3,7 +3,7 @@
 
 //.// 2/6/23 #: API Restful.
 //.// -------#: now basic crud operations working on `/cursos`, `/profesores` and `/estudiantes`. 
-//.// -------#: Obtener todos los cursos de un estudiante: `/estudiantes/:id/cursos`
+
 
 //.// -------#: Get all estudiantes from  curso: `/cursos/:id/estudiantes`(GET). 
 //.// -------#: Get all cursos from a estudiante `/estudiantes/:id/cursos`(GET). 
